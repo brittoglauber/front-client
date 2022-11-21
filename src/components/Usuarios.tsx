@@ -8,7 +8,7 @@ const Usuarios = () => {
   const [usuarios, setUsuarios] = useState<IUser[]>([])  
   
   useEffect(() => {
-    axios.get('http://localhost:5000/user')
+    axios.get('http://localhost:5000/users')
         .then(resposta => {
             setUsuarios(resposta.data.results)
         })
@@ -19,7 +19,9 @@ const Usuarios = () => {
 
   return (
     <>
-        usuarios[]
+        <div className='flex justify-center align-center h-screen'>
+          teste
+        </div>
     </>
   )
 }

@@ -3,6 +3,7 @@ import IUser from '../types/IUser'
 
 interface UsuariosProps {
     usuarios: IUser
+    username: string
 }
 
 const Usuario = ({ usuarios }: UsuariosProps) => {

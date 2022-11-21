@@ -4,66 +4,30 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 export default function FormCadastro() {
 
-    const usernameRef = useRef<HTMLDivElement>(null)
-    const errRef = useRef<HTMLDivElement>(null)
-
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
     
-    const [username, setUsername] = useState("")
-    const [validName, setValidName] = useState(false);
-    const [usernameFocus, setUsernameFocus] = useState(false);
-
-    const [password, setpassword] = useState("");
-    const [validpassword, setValidpassword] = useState(false);
-    const [passwordFocus, setpasswordFocus] = useState(false);
-    
-    const [matchpassword, setMatchpassword] = useState('');
-    const [validMatch, setValidMatch] = useState(false);
-    const [matchFocus, setMatchFocus] = useState(false);
-
-    const [errMsg, setErrMsg] = useState('');
-    const [success, setSuccess] = useState(false);
-
-    
-
-    useEffect(() => {
-        if(usernameRef.current != null){
-            usernameRef.current.focus();
-        }   
-    }, [])
-
-    
-    useEffect(() => {
-        setErrMsg('');
-    }, [username, password, matchpassword])
-    
-    const handleSubmit = async (e: any) => {
-        e.preventDefault();
         
-        
+       
+    const handleSubmit = async(e: any) => {
+        e.preventDefault()
+        console.log(username, password)
+
         try {
-            const response = await axios.post('http://localhost:5000/registro',
-                JSON.stringify({ username, password }),
-                {
-                    headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
-                }
-            ); 
-            console.log(JSON.stringify(response?.data));   
-            setSuccess(true);
-            setUsername('');
-            setpassword('');
-            setMatchpassword('');
-        } catch (err) {
-            console.log(err)
+            const resposta = await axios.post('http://localhost:5000/user', 
+                {username: username, password: password})
+            
+            console.log(resposta.data)
+        } catch (erro) {
+            console.log(erro)
         }
     }
-
     
     
 
     return (
         <div>
-            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+            
             <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
                 <div>
                     <a href="/">
@@ -90,10 +54,6 @@ export default function FormCadastro() {
                                     onChange={(e) => setUsername(e.target.value)}
                                     value={username}
                                     required
-                                    aria-invalid={validName ? "false" : "true"}
-                                    aria-describedby="uidnote"
-                                    onFocus={() => setUsernameFocus(true)}
-                                    onBlur={() => setUsernameFocus(false)}
                                     name="name"
                                     className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 />
@@ -112,13 +72,9 @@ export default function FormCadastro() {
                                 <input
                                     type="password"
                                     id="password"
-                                    onChange={(e) => setpassword(e.target.value)}
+                                    onChange={(e) => setPassword(e.target.value)}
                                     value={password}
                                     required
-                                    aria-invalid={validpassword ? "false" : "true"}
-                                    aria-describedby="passwordnote"
-                                    onFocus={() => setpasswordFocus(true)}
-                                    onBlur={() => setpasswordFocus(false)}
                                     name="password"
                                     className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 />
@@ -126,30 +82,7 @@ export default function FormCadastro() {
                             </div>
                         </div>
 
-                        <div className="mt-4">
-                            <label
-                                htmlFor="password"
-                                className="block text-sm font-medium text-gray-700 undefined"
-                            >
-                                Confirmar Senha
-                            </label>
-                            <div className="flex flex-col items-start">
-                                <input
-                                    type="password"
-                                    id="confirm_password"
-                                    onChange={(e) => setMatchpassword(e.target.value)}
-                                    value={matchpassword}
-                                    required
-                                    aria-invalid={validMatch ? "false" : "true"}
-                                    aria-describedby="confirmnote"
-                                    onFocus={() => setMatchFocus(true)}
-                                    onBlur={() => setMatchFocus(false)}
-                                    name="password"
-                                    className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                />
-                               
-                            </div>
-                        </div>
+                        
                         
                         
                         <div className="flex items-center justify-end mt-4">
