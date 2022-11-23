@@ -1,12 +1,13 @@
-import React from 'react'
+
 import NavBar from '../components/Navbar'
-import Usuarios from '../components/Usuarios'
 
 const Home = () => {
   return (
     <>
       <NavBar />
-      <Usuarios />
+      <div className='flex justify-center items-center h-3/5 sm'>
+        <h1 className='text-4xl text-purple-500'>Seja bem vindo a Finance !</h1>
+      </div>
     </>
   )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import IUser from '../types/IUser'
+import IUser from '../types/User'
 
 interface UsuariosProps {
     usuarios: IUser

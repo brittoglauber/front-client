@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import IUser from '../types/IUser'
+import IUser from '../types/User'
 import Usuario from './Usuario'
 
 const Usuarios = () => {

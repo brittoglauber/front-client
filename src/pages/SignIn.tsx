@@ -1,11 +1,12 @@
-import FormEntrar from "../components/FormEntrar";
-import NavBar from "../components/Navbar";
-export default function Form() {
-    return (
-        <>
-            <NavBar />
-            <FormEntrar />
 
-        </>
-    );
+import FormEntrar from "../components/FormEntrar"
+
+const SignIn = () => {
+  return (
+    <>
+       <FormEntrar />
+    </>
+  )
 }
+
+export default SignIn

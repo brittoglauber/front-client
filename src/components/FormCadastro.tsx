@@ -1,6 +1,6 @@
 
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 export default function FormCadastro() {
 
@@ -85,16 +85,16 @@ export default function FormCadastro() {
                         
                         
                         
-                        <div className="flex items-center justify-end mt-4">
+                        <div className="flex items-center justify-between  mt-4">
                             <Link to={"/entrar"}
-                                className="text-sm text-gray-600 underline hover:text-gray-900"
+                                className="text-sm text-gray-600 underline hover:text-gray-900 ml-8"
                                 
                             >
                                 Já tem registro?
                             </Link>
                             <button
                                 type="submit"
-                                className="inline-flex items-center px-4 py-2 ml-4 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-900 border border-transparent rounded-md active:bg-gray-900 false"
+                                className="inline-flex items-center px-4 py-2  mr-8 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-900 border border-transparent rounded-md active:bg-gray-900 false"
                             >
                                 Cadastrar
                             </button>

@@ -1,5 +1,18 @@
+import { useState } from "react"
+
+
 
 const FormEntrar = () => {
+  
+  
+
+  const [ username, setUsername ] = useState("")  
+  const [ password, setPassword ] = useState("") 
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault()
+    console.log("submit", { username, password })
+  }
     
 
   return (
@@ -13,7 +26,7 @@ const FormEntrar = () => {
             </a>
         </div>
         <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-md sm:rounded-lg">
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <label
                         htmlFor="name"
@@ -25,6 +38,8 @@ const FormEntrar = () => {
                         <input
                             type="text"
                             name="name"
+                            onChange={(e) => setUsername(e.target.value)}
+                            value={username}
                             className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                         />
                     </div>
@@ -41,12 +56,14 @@ const FormEntrar = () => {
                         <input
                             type="password"
                             name="password"
+                            onChange={(e) => setPassword(e.target.value)}
+                            value={password}
                             className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                         />
                     </div>
                 </div>
                 
-                <div className="flex items-center justify-end mt-4">
+                <div className="flex items-center justify-center mt-4">
                     
                     <button
                         type="submit"
